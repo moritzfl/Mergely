@@ -2,6 +2,7 @@ const CodeMirror = require('codemirror');
 require('codemirror/addon/search/searchcursor.js');
 require('codemirror/addon/selection/mark-selection.js');
 require('codemirror/lib/codemirror.css');
+require('codemirror/mode/xml/xml.js');
 
 const dom = require('./dom.js');
 const VDoc = require('./vdoc');
