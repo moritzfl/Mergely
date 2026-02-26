@@ -319,7 +319,7 @@ CodeMirrorDiffView.prototype.bind = function(container) {
 			if (!notice) {
 				notice = noticeTypes.lgpl;
 			}
-			const editor = this._queryElement(`#${this.id}`);
+			const editor = this.el;
 			const splash = dom.getSplash({
 				notice,
 				left: (editor.offsetWidth - 300) / 2,
@@ -741,6 +741,10 @@ CodeMirrorDiffView.prototype._isChangeInView = function(side, vp, change) {
 		return true;
 	}
 
+	// there are 3 conditions to test
+	// 1: the change "from" is within the viewport from/to
+	// 2: the change "to" is within the viewport from/to
+	// 3: the change is so big that the viewport is within
 	return (change[`${side}-line-from`] >= vp.from && change[`${side}-line-from`] <= vp.to) ||
 		(change[`${side}-line-to`] >= vp.from && change[`${side}-line-to`] <= vp.to) ||
 		(vp.from >= change[`${side}-line-from`] && vp.to <= change[`${side}-line-to`]);
@@ -1091,8 +1095,8 @@ CodeMirrorDiffView.prototype._renderDiff = function(changes) {
 		ctx_lhs.strokeRect(1.5, mkr_lhs_y_start, 4.5, Math.max(mkr_lhs_y_end - mkr_lhs_y_start, 5));
 		ctx_lhs.stroke();
 
-		const mkr_rhs_y_start = change['rhs-y-start'] * lratio;
-		const mkr_rhs_y_end = Math.max(change['rhs-y-end'] * lratio, 5);
+		const mkr_rhs_y_start = change['rhs-y-start'] * rratio;
+		const mkr_rhs_y_end = Math.max(change['rhs-y-end'] * rratio, 5);
 		ctx_rhs.beginPath();
 		ctx_rhs.fillStyle = '#a3a3a3';
 		ctx_rhs.strokeStyle = '#000';
@@ -1187,7 +1191,9 @@ CodeMirrorDiffView.prototype._renderDiff = function(changes) {
 		ex.lhs_scroller.scrollTo({ top: sto });
 	};
 	this._handleRhsMarginClick = function (ev) {
-		const y = ev.pageY - ex.rhs_xyoffset.top - (rto / 2);
+		// `top` accounts for the editor starting at position other than 0 on page
+		const { top } = ev.currentTarget.offsetParent.getBoundingClientRect();
+		const y = (ev.pageY - top) - ex.rhs_xyoffset.top - (rto / 2);
 		const sto = Math.max(0, (y / mcanvas_rhs.height) * ex.rhs_scroller.scrollHeight);
 		ex.rhs_scroller.scrollTo({ top: sto });
 	};
@@ -1201,7 +1207,7 @@ CodeMirrorDiffView.prototype._renderDiff = function(changes) {
 
 CodeMirrorDiffView.prototype._queryElement = function(selector) {
 	const cacheName = `_element:${selector}`;
-	const element = this[cacheName] || document.querySelector(selector);
+	const element = this[cacheName] || this.el.querySelector(selector);
 	if (!this[cacheName]) {
 		this[cacheName] = element;
 	}

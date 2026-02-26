@@ -1,3 +1,45 @@
+## [5.4.6](https://github.com/wickedest/Mergely/compare/v5.4.5...v5.4.6) (2026-02-24)
+
+
+### Bug Fixes
+
+* **#228:** Clicking on edit marker in gutter now accounts for top position of editor. ([cc7df68](https://github.com/wickedest/Mergely/commit/cc7df68aea62e2e3a18c996fa56048f1e583faa5)), closes [#228](https://github.com/wickedest/Mergely/issues/228)
+
+## [5.4.5](https://github.com/wickedest/Mergely/compare/v5.4.4...v5.4.5) (2026-02-23)
+
+
+### Bug Fixes
+
+* **#222:** Fixed issue with poor rendering performance and marker misalignment ([27778f0](https://github.com/wickedest/Mergely/commit/27778f0840895bf5e029d8c962e99890b8a0a8f6)), closes [#222](https://github.com/wickedest/Mergely/issues/222) [#227](https://github.com/wickedest/Mergely/issues/227)
+
+## [5.4.4](https://github.com/wickedest/Mergely/compare/v5.4.3...v5.4.4) (2026-02-23)
+
+
+### Bug Fixes
+
+* Updated examples README.md ([f1e58f5](https://github.com/wickedest/Mergely/commit/f1e58f58fea85628b1dd345b98b23923f05d8c2e))
+
+## [5.4.3](https://github.com/wickedest/Mergely/compare/v5.4.2...v5.4.3) (2026-02-23)
+
+
+### Bug Fixes
+
+* Removed whitespace from example ([69ecf76](https://github.com/wickedest/Mergely/commit/69ecf76fe6066ded1efca06f9ee0ad985e8ed047))
+
+## [5.4.2](https://github.com/wickedest/Mergely/compare/v5.4.1...v5.4.2) (2026-02-23)
+
+
+### Bug Fixes
+
+* Removed whitespace from example ([00a7917](https://github.com/wickedest/Mergely/commit/00a79170a8d4b701d6da98c1d6ea921b592fb3d1))
+
+## [5.4.1](https://github.com/wickedest/Mergely/compare/v5.4.0...v5.4.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* **#225:** Fixes rendering issue when there are multiple editors ([1a2ee6a](https://github.com/wickedest/Mergely/commit/1a2ee6af3d7d87160e72e8faca5e38cf01b36fcb))
+
 # [5.4.0](https://github.com/wickedest/Mergely/compare/v5.3.6...v5.4.0) (2025-11-15)
 
 
